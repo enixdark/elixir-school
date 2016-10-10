@@ -3,7 +3,7 @@ layout: page
 title: Testing
 category: basics
 order: 12
-lang: vi
+lang: en
 ---
 
 Testing is an important part of developing software.  In this lesson we'll look at how to test our Elixir code with ExUnit and some best practices for doing so.
@@ -69,7 +69,7 @@ Finished in 0.03 seconds (0.02s on load, 0.01s on tests)
 1 tests, 1 failures
 ```
 
-ExUnit will tells us exactly where our failed assertions are, what the expected value was, and what the actual was.
+ExUnit will tells us exactly where our failed assertions are, what the expected value was, and what the actual value was.
 
 ### refute
 
@@ -77,7 +77,7 @@ ExUnit will tells us exactly where our failed assertions are, what the expected 
 
 ### assert_raise
 
-Sometimes it may be necessary to assert that an error has been raised, we can do this with `assert_raise`.  We'll see an example of `assert_raise` in the next lesson on Plug.
+Sometimes it may be necessary to assert that an error has been raised.  We can do this with `assert_raise`.  We'll see an example of `assert_raise` in the next lesson on Plug.
 
 ## Test Setup
 

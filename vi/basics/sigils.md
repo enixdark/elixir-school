@@ -3,7 +3,7 @@ layout: page
 title: Sigils
 category: basics
 order: 10
-lang: vi
+lang: en
 ---
 
 Working with and creating sigils.
@@ -20,10 +20,10 @@ A list of available sigils include:
   - `~c` Generates a character list **with** escaping and interpolation
   - `~R` Generates a regular expression **with no** escaping or interpolation
   - `~r` Generates a regular expression **with** escaping and interpolation
-  - `~S` Generates strings **with no** escaping or interpolation
-  - `~s` Generates string **with** escaping and interpolation
-  - `~W` Generates a list  **with no** escaping or interpolation
-  - `~w` Generates a list **with** escaping and interpolation
+  - `~S` Generates a string **with no** escaping or interpolation
+  - `~s` Generates a string **with** escaping and interpolation
+  - `~W` Generates a word list **with no** escaping or interpolation
+  - `~w` Generates a word list **with** escaping and interpolation
 
 A list of delimiters include:
 
@@ -65,7 +65,7 @@ iex> "elixir" =~ re
 true
 ```
 
-We can see that in the first test for equality, that `Elixir` does not match with the regular expression. This is because it is capitalized. Because Elixir supports Perl Compatible Regular Expressions (PCRE), we can append `i` to the end of our sigil to turn on case sensitivity.
+We can see that in the first test for equality, that `Elixir` does not match with the regular expression. This is because it is capitalized. Because Elixir supports Perl Compatible Regular Expressions (PCRE), we can append `i` to the end of our sigil to turn off case sensitivity.
 
 ```elixir
 iex> re = ~r/elixir/i
