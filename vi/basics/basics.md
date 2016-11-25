@@ -1,18 +1,18 @@
-Index.md
-Các bài học về ngôn ngữ lạp trình Elixir đều được lấy cám hứng từ Scala School (Twitter).
+---
+layout: page
+title: Basics
+category: basics
+order: 1
+lang: vi
+---
 
-Elixir là gì:
-Elixir là ngôn ngữ lập trình hàm, hướng tự động ( không cần phải khai bao kiểu dữ liệu cho biến, trình dịch của elixỉr sẽ tự động phân tích ) được thiêt kế dành để xây dựng các ứng dụng dễ mở rộng và bảo trì.
+Getting started, basic data types and basic operations.
 
-Elixir được xây dựng trên nền tảng máy ảo Erlang Virtual Machine (Beam) ,dùng để xây dựng các hệ  thống phân tán và  chịu/kháng lỗi cao với độ trễ thấp.
+{% include toc.html %}
 
-Chức năng:
-- Mở rộng hệ thống (Scalable)
-- kháng ( chịu ) lỗi (Fault-tolerant)
-- Lập trình hàm (Functional Programming)
-- Mở rộng theo ngôn ngữ (Extensible)
+## Getting Started
 
-Basic ( Cơn bản )
+Basic ( Cơ bản )
 
 kiểu dữ liệu cơ bản và cơ chế hoạt động:
 

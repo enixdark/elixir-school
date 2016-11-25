@@ -1,25 +1,26 @@
 ---
 layout: page
-title: Collections
+title: Collections ( Tập hợp )
 category: basics
 order: 2
-lang: en
+lang: vi
 ---
 
 List, tuples, keywords, maps and functional combinators.
 
 {% include toc.html %}
 
-## Lists
+## Lists ( Danh sách )
 
-Lists are simple collections of values, they may include multiple types; lists may include non-unique values:
+Trong Elixir danh sách là một tập hợp của các giá trị, bao gồm nhiều kiểu dữ liệu khác nhau và có thẻ lặp lại.
 
 ```elixir
 iex> [3.14, :pie, "Apple"]
 [3.14, :pie, "Apple"]
 ```
 
-Elixir implements list as linked lists.  This means accessing the list length is an `O(n)` operation.  For this reason, it is typically faster to prepend than append:
+lists trong Elixir được thực hiện như một link lists( danh sách liên kết ), điều này tức là việc truy câp độ dài của lists có độ phức tạp `O(n)`.
+Do đó, việc thêm phàn tử vào đầu danh sách sẽ nhanh hơn là thêm vào cuối danh sách.
 
 ```elixir
 iex> list = [3.14, :pie, "Apple"]
@@ -31,18 +32,24 @@ iex> list ++ ["Cherry"]
 ```
 
 
-### List Concatenation
+### List Concatenation ( Nối danh sách )
 
-List concatenation uses the `++/2` operator:
+toán tử `++/2` được sử dụng để nối lists:
 
 ```elixir
 iex> [1, 2] ++ [3, 4, 1]
 [1, 2, 3, 4, 1]
 ```
 
-### List Subtraction
+trong định dạng của kỳ hiệu (++/2) sử dụng phía trên: trong elixir( erlang ) , tên của một hàm hay toán tử gồm có 2 thành phần: 
+- tên hàm/toán tử 
+- tham số ( arity )
+trong đó tên hàm là tên hám/toán tử do người dùng cung cấp trong trg hợp trên là `++`. tham số ( arity ) là số lượng các tham số của hàm đó và đựơc phân cách nhau bởi kỳ tự `/`
+trong vd trên `++/2` tức là toán từ có tên là `++` nhận 2 tham số.
 
-Support for subtraction is provided via the `--/2` operator; it's safe to subtract a missing value:
+### List Subtraction ( Trừ danh sách )
+
+toán tử `--/2` được sử dụng để trừ danh sách. Bao gồm cả những giá trị không có trong danh sách trừ.
 
 ```elixir
 iex> ["foo", :bar, 42] -- [42, "bar"]
@@ -51,10 +58,10 @@ iex> ["foo", :bar, 42] -- [42, "bar"]
 
 **Note:** It uses [strict comparison](../basics/#comparison) to match the values.
 
-### Head / Tail
+### Head / Tail (Đầu / Đuôi)
 
-When using lists it is common to work with a list's head and tail.  The head is the list's first element while the tail is the remaining elements.  Elixir provides two helpful methods, `hd` and `tl`, for working with these parts:
-
+Khi sử dụng danh sách , ta thường sử dụng danh sách với đầu ( head )  và đuôi( tail ) của danh sách, trong đó đầu(head) là  đầu là phần tử đầu tiên của danh sách và đuôi( tail) là những phần tử còn lại của danh sách. Elixir cung cấp 2 phương thức để sử dụng cùng đầu ( head ) cuối ( tail ) của danh sách là `hd` và `tl`:
+  x
 ```elixir
 iex> hd [3.14, :pie, "Apple"]
 3.14
@@ -62,7 +69,7 @@ iex> tl [3.14, :pie, "Apple"]
 [:pie, "Apple"]
 ```
 
-In addition to the aforementioned functions, you can use [pattern matching](../pattern-matching/) and the cons operator `|` to split a list into head and tail; we'll learn more about this pattern in later lessons:
+Ngoài 2 phương thức trên, bạn cũng có thể sử dụng khớp mẫu [pattern matching](../pattern-matching/) cùng vỡi toán từ '|' để tách danh sách ra thành đầu ( head ) và đuôi ( tail ); trong các bài học sau chúng ta sẽ tìm hiểu về khớp mẫu:
 
 ```elixir
 iex> [h|t] = [3.14, :pie, "Apple"]
@@ -73,16 +80,16 @@ iex> t
 [:pie, "Apple"]
 ```
 
-## Tuples
+## Tuples (Bộ)
 
-Tuples are similar to lists but are stored contiguously in memory.  This makes accessing their length fast but modification expensive; the new tuple must be copied entirely to memory.  Tuples are defined with curly braces:
+Bộ (Tuples ) là kiểu dữ liệu tương tự như danh sách ( list ) nhưng thay lưu trữ theo dạng liên kết thì nó đựoc lưu trữ lên tục trên bộ nhớ. Nhờ vào vậy việc truyên cập vào độ dài của Bộ (Tuples ) sẽ nhanh hơn nhưng sẽ khó đề chỉnh sửa. Nếu muốn chỉnh sửa thay vì truy cập vào phần từ như dạng danh sách thì ta phải sao chép lại toàn bộ vào trong bộ nhớ.  Ta sử dụng 2 cặp ngoặc {} để định nghia/quy ước: 
 
 ```elixir
 iex> {3.14, :pie, "Apple"}
 {3.14, :pie, "Apple"}
 ```
 
-It is common for tuples to be used as a mechanism to return additional information from functions; the usefulness of this will be more apparent when we get into pattern matching:
+Chúng ta thuờng sử dụng Bộ ( Tuples ) như một cơ chế để trả về các thông tin của hàm ( functions ). Việc làm này sẽ hữu dụng khi dùng cùng với khớp mẫu( pattern matching ):
 
 ```elixir
 iex> File.read("path/to/existing/file")
@@ -91,9 +98,9 @@ iex> File.read("path/to/unknown/file")
 {:error, :enoent}
 ```
 
-## Keyword lists
+## Keyword lists ( Danh sach khóa )
 
-Keywords and maps are the associative collections of Elixir.  In Elixir, a keyword list is a special list of tuples whose first element is an atom; they share performance with lists:
+danh sách khóa( keyword list) và map là những kiểu dữ liệu tập hợp ( từ điển ) trong Elixir.  Trong Elixir, danh sách từ khóa là một danh sách dặc biệt của bộ mà phần từ đầu tiên thì là một kiểu dữ liệu:
 
 ```elixir
 iex> [foo: "bar", hello: "world"]
@@ -102,17 +109,17 @@ iex> [{:foo, "bar"}, {:hello, "world"}]
 [foo: "bar", hello: "world"]
 ```
 
-The three characteristics of keyword lists highlight their importance:
+Thcó 3 dặc thủ nổi bật quan trọng của kiểu dữ liệu danh sách khóa mà ta cần biết::
 
-+ Keys are atoms.
-+ Keys are ordered.
-+ Keys are not unique.
++ Khóa là một atom
++ Khóa có trình tự
++ Khóa không phải duy nhất ( được phép lắp )
 
-For these reasons keyword lists are most commonly used to pass options to functions.
+vì những lí do trên mà chứng ta thuờng sử dụng danh sách khóa như một tham số không bắt buộc để truyền vào hàm.
 
 ## Maps
 
-In Elixir maps are the "go-to" key-value store. Unlike keyword lists they allow keys of any type and are un-ordered.  You can define a map with the `%{}` syntax:
+Trong elixir kiểu dữ liệu maps là dữ liệu dưới dạng key-value hay còn đựoc gọi là kiểu dữ liệu từ điển. không giống với danh sách từ khóa , maps cho phép các khóa đựoc định nghĩa ở bất kỳ kiểu dữ liệu nào và không theo trình tự. maps được quy ứơc trong "%{}":
 
 ```elixir
 iex> map = %{:foo => "bar", "hello" => :world}
@@ -123,7 +130,7 @@ iex> map["hello"]
 :world
 ```
 
-As of Elixir 1.2 variables are allowed as map keys:
+từ Elixir 1.2 trở lên , biến cũng có thể sử dụng như một từ khóa trong maps:
 
 ```elixir
 iex> key = "hello"
@@ -132,14 +139,14 @@ iex> %{key => "world"}
 %{"hello" => "world"}
 ```
 
-If a duplicate is added to a map, it will replace the former value:
+Nếu thêm một khóa lặp cùng giá trị vào trong maps. nó sẽ thay thế giá trị cũ bằng giá trị mới:
 
 ```elixir
 iex> %{:foo => "bar", :foo => "hello world"}
 %{foo: "hello world"}
 ```
 
-As we can see from the output above, there is a special syntax for maps containing only atom keys:
+Như chúng ta thấy từ kết quả output phía trên , có một cú pháp dặc biệt đối với maps nếu khóa của nó chỉ là atom:
 
 ```elixir
 iex> %{foo: "bar", hello: "world"}
@@ -149,7 +156,7 @@ iex> %{foo: "bar", hello: "world"} == %{:foo => "bar", :hello => "world"}
 true
 ```
 
-Another interesting property of maps is that they provide their own syntax for updating and accessing atom keys:
+trong maps có hỗ trợ cú pháp update và truy cập vào các khóa riêng, đây là mọt trong những đặc tính thú vị của maps:
 
 ```elixir
 iex> map = %{foo: "bar", hello: "world"}
